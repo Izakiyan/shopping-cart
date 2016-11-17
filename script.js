@@ -7,9 +7,18 @@ var CartItem = function (name, price) {
 }
 
 var updateCart = function () {
+	var total = 0;
+	var $total = $('.total');
+
+  $('.cart-list').empty();
   for (var i = 0; i < cart.length; i++) {
-  	cart[i]
+  	var source = $('#cart-template').html();
+  	var template = Handlebars.compile(source);
+  	var html = template(cart[i]);
+  	$('.cart-list').append(html);
+  	total += cart[i].price;
   }
+  $total.text(total);
 }
 
 
