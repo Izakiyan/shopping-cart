@@ -27,7 +27,9 @@ var addItem = function (item) {
 }
 
 var clearCart = function () {
-  
+  $('.cart-list').empty();
+  $('.total').text(0);
+  cart = [];
 }
 
 $('.view-cart').on('click', function () {
