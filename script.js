@@ -1,5 +1,7 @@
 // an array with all of our cart items
 var cart = [];
+var $total = $('.total');
+var $cartList = $('.cart-list');
 
 var CartItem = function (name, price) {
 	this.name = name;
@@ -8,27 +10,26 @@ var CartItem = function (name, price) {
 
 var updateCart = function () {
 	var total = 0;
-	var $total = $('.total');
+	
 
   $('.cart-list').empty();
   for (var i = 0; i < cart.length; i++) {
   	var source = $('#cart-template').html();
   	var template = Handlebars.compile(source);
   	var html = template(cart[i]);
-  	$('.cart-list').append(html);
+  	$cartList.append(html);
   	total += cart[i].price;
   }
   $total.text(total);
 }
-
 
 var addItem = function (item) {
   cart.push(item);
 }
 
 var clearCart = function () {
-  $('.cart-list').empty();
-  $('.total').text(0);
+  $cartList.empty();
+  $total.text(0);
   cart = [];
 }
 
